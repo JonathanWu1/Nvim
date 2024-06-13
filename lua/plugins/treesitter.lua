@@ -3,7 +3,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'typescript', 'css', 'scss','c_sharp', 'json', 'html', 'lua', 'luadoc','javascript' },
+      ensure_installed = { 'typescript', 'css', 'scss','c_sharp', 'json', 'html', 'lua', 'luadoc','javascript', 'rust' },
       auto_install = true,
       highlight = {
         enable = true,

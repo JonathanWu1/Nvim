@@ -20,45 +20,42 @@ local on_attach = function(client, bufnr)
 
 	-- Lesser used LSP functionality
 	map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	-- map("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-	-- map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-	-- map("<leader>wl", function()
-	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	-- end, "[W]orkspace [L]ist Folders")
-
-	-- we want to use the null-ls formatter, so disable the built-in one
-	-- local disable_formatting = { "pyright", "sumneko_lua" }
-	-- if vim.tbl_contains(disable_formatting, client.name) then
-	--     client.server_capabilities.documentFormattingProvider = false
-	-- end
-
-	if client.server_capabilities.documentFormattingProvider then
-		-- Create a command `:Format` local to the LSP buffer
-		vim.api.nvim_buf_create_user_command(
-			bufnr,
-			"Format",
-			vim.lsp.buf.format,
-			{ desc = "Format current buffer with LSP" }
-		)
-
-		map("<leader>fm", vim.lsp.buf.format, "Format buffer")
-	end
-
-	-- -- CodeLens
-	-- local libpl_codelens = require("lazy-require").require_on_exported_call("libpl.codelens")
-	-- map("<leader>cl", libpl_codelens.run, "Run [C]ode[L]ens")
-	-- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-	-- 	buffer = bufnr,
-	-- 	callback = function(opts)
-	-- 		libpl_codelens.refresh(opts.buf)
-	-- 	end,
-	-- })
 end
 return {
 
-	{ "williamboman/mason.nvim", config = true },
-
 	{
+		"williamboman/mason.nvim",
+		config = true,
+	},
+	{
+		'stevearc/conform.nvim',
+		opts = {},
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					-- Use a sub-list to run only the first available formatter
+					lua = { "stylua" },
+					typescriptreact = { { "prettierd", "prettier" } },
+					typescript = { { "prettierd", "prettier" } },
+					javascript = { { "prettierd", "prettier" } },
+					cs = { { "csharpier" } },
+				},
+				format_on_save = {
+					-- These options will be passed to conform.format()
+					timeout_ms = 500,
+					lsp_fallback = true,
+				},
+			})
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					require("conform").format({ bufnr = args.buf })
+				end,
+			})
+		end,
+	},
+	{
+
 		"williamboman/mason-lspconfig.nvim",
 		event = "BufReadPre",
 		dependencies = {
@@ -71,18 +68,13 @@ return {
 		config = function()
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 			local capabilities = vim.tbl_deep_extend(
-				"force",
-				vim.lsp.protocol.make_client_capabilities(),
-				cmp_nvim_lsp.default_capabilities()
+			"force",
+			vim.lsp.protocol.make_client_capabilities(),
+			cmp_nvim_lsp.default_capabilities()
 			)
 
-			require("roslyn").setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
 			require("mason-lspconfig").setup({
-				ensure_installed = { "cssls", "tsserver", "html" }
+				ensure_installed = { "tailwindcss", "tsserver", "lua_ls", "omnisharp", "rust_analyzer", "html" }
 			})
 			require("mason-lspconfig").setup_handlers({
 				-- The first entry (without a key) will be the default handler
@@ -92,7 +84,7 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-				
+
 				["lua_ls"] = function()
 					require("neodev").setup()
 					require("lspconfig").lua_ls.setup({
@@ -110,7 +102,6 @@ return {
 
 			})
 
-			-- vim.lsp.set_log_level("DEBUG")
 		end,
 	},
 }
