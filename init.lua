@@ -31,7 +31,7 @@ require('lazy').setup({
     },
     { 'tpope/vim-sleuth' },
     { 'numToStr/Comment.nvim' },
-    { import = 'plugins' }
+    { import = 'plugins' },
 },
 {
     ui = {
