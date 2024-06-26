@@ -14,11 +14,9 @@ return {
 	vim.keymap.set("n", "<C-t>",function()
               local state = require("telescope.actions.state")
               local selected_entry = state.get_selected_entry()
-              local current_picker = state.get_current_picker(prompt_buffer_number)
 
               -- This is the line you need to remove the entry
               harpoon:list():remove(selected_entry)
-              current_picker:refresh(make_finder())
             end) 
 
 	vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)

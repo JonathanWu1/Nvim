@@ -23,6 +23,10 @@ return {
                     require('telescope.themes').get_dropdown(),
                 },
             },
+            defaults = {
+
+                file_ignore_patterns = { "node%_modules/.*", "bin\\", "obj\\" }
+            }
         }
 
         -- Enable Telescope extensions if they are installed
