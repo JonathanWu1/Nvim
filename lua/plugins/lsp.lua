@@ -73,7 +73,7 @@ return {
 			)
 
 			require("mason-lspconfig").setup({
-				ensure_installed = { "tailwindcss", "tsserver", "lua_ls", "omnisharp", "rust_analyzer", "html" }
+				ensure_installed = { "tailwindcss", "tsserver", "lua_ls", "omnisharp", "rust_analyzer", "html", "graphql" }
 			})
 			require("mason-lspconfig").setup_handlers({
 				-- The first entry (without a key) will be the default handler
@@ -99,6 +99,16 @@ return {
 					})
 				end,
 
+				["graphql"] = function()
+					require("lspconfig").graphql.setup({
+						on_attach = on_attach,
+						root_dir = lspconfig.util.root_pattern(".graphqlconfig", ".graphqlrc", "package.json"),
+						flags = {
+							debounce_text_changes = 150,
+						},
+						capabilities = capabilities,
+					})
+				end,
 			})
 
 		end,

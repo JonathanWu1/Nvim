@@ -20,7 +20,6 @@ require('lazy').setup({
                 styles = {
                     bold = true,
                     italic = false,
-                    transparency = true,
                 }
 
             })
@@ -31,6 +30,7 @@ require('lazy').setup({
     },
     { 'tpope/vim-sleuth' },
     { 'numToStr/Comment.nvim' },
+    {'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
     { import = 'plugins' },
 },
 {
