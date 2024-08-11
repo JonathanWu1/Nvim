@@ -1,6 +1,32 @@
 <keymap version="1" name="IntelliJ copy 1" parent="$default">
+  <action id="ActivateBookmarksToolWindow" />
+  <action id="ActivateCommitToolWindow">
+    <keyboard-shortcut first-keystroke="alt 3" />
+  </action>
+  <action id="ActivateDatabaseToolWindow">
+    <keyboard-shortcut first-keystroke="alt 6" />
+  </action>
+  <action id="ActivateDebugToolWindow" />
+  <action id="ActivateFindToolWindow" />
+  <action id="ActivateNuGetToolWindow" />
+  <action id="ActivateProblemsViewToolWindow" />
+  <action id="ActivateRunToolWindow" />
+  <action id="ActivateServicesToolWindow">
+    <keyboard-shortcut first-keystroke="alt 2" />
+  </action>
+  <action id="ActivateStructureToolWindow" />
+  <action id="ActivateTerminalToolWindow" />
+  <action id="ActivateTestsToolWindow">
+    <keyboard-shortcut first-keystroke="alt 4" />
+  </action>
+  <action id="ActivateVersionControlToolWindow">
+    <keyboard-shortcut first-keystroke="alt 5" />
+  </action>
   <action id="EslintImportCodeStyle">
     <keyboard-shortcut first-keystroke="ctrl alt 2" />
+  </action>
+  <action id="ExtractInterface">
+    <keyboard-shortcut first-keystroke="f16" />
   </action>
   <action id="FindInPath" />
   <action id="InsertInlineCompletionAction">
@@ -12,6 +38,10 @@
   <action id="ShowIntentionActions">
     <keyboard-shortcut first-keystroke="alt enter" />
     <keyboard-shortcut first-keystroke="shift alt enter" />
+  </action>
+  <action id="TextSearchAction">
+    <keyboard-shortcut first-keystroke="shift ctrl alt e" />
+    <keyboard-shortcut first-keystroke="f14" />
   </action>
   <action id="ToggleZenMode">
     <keyboard-shortcut first-keystroke="shift ctrl alt z" />

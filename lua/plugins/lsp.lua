@@ -98,17 +98,6 @@ return {
 						},
 					})
 				end,
-
-				["graphql"] = function()
-					require("lspconfig").graphql.setup({
-						on_attach = on_attach,
-						root_dir = lspconfig.util.root_pattern(".graphqlconfig", ".graphqlrc", "package.json"),
-						flags = {
-							debounce_text_changes = 150,
-						},
-						capabilities = capabilities,
-					})
-				end,
 			})
 
 		end,
