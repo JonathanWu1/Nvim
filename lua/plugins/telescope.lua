@@ -60,6 +60,10 @@ return {
           require('telescope.themes').get_dropdown(),
         },
       },
+      file_ignore_patterns = {
+        '*\\.class',
+        'test.class',
+      },
     }
 
     -- Enable Telescope extensions if they are installed

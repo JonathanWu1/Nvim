@@ -142,5 +142,7 @@ return {
         end,
       },
     }
+    require('java').setup()
+    require('lspconfig').jdtls.setup {}
   end,
 }
