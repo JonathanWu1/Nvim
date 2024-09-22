@@ -1,6 +1,6 @@
-require 'lua.autocmd'
-require 'lua.keymaps'
-require 'lua.options'
+require 'autocmd'
+require 'keymaps'
+require 'options'
 
 -- CMD:
 -- :help lazy.nvim.txt
