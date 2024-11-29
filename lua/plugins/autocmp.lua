@@ -102,6 +102,14 @@ return { -- Autocompletion
       },
       sources = {
         {
+          name = 'buffer',
+          option = {
+            get_bufnrs = function()
+              return { vim.api.nvim_get_current_buf() }
+            end,
+          },
+        },
+        {
           name = 'lazydev',
           -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
           group_index = 0,

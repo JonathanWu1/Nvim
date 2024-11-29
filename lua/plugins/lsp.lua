@@ -129,7 +129,6 @@ return {
       'stylua', -- Used to format Lua code
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
@@ -141,8 +140,10 @@ return {
           require('lspconfig')[server_name].setup(server)
         end,
       },
+      ensure_installed = { 'ts_ls', 'lua_ls', 'html' },
     }
     require('java').setup()
     require('lspconfig').jdtls.setup {}
+    require('lspconfig').azure_pipelines_ls.setup {}
   end,
 }
