@@ -145,5 +145,11 @@ return {
     require('java').setup()
     require('lspconfig').jdtls.setup {}
     require('lspconfig').azure_pipelines_ls.setup {}
+    require('lspconfig').clangd.setup {
+      cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+      init_options = {
+        fallbackFlags = { '-std=c++17' },
+      },
+    }
   end,
 }
