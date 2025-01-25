@@ -2,6 +2,10 @@ return { -- Autoformat
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
+  format_on_save = {
+    timeout_ms = '500ms',
+    lsp_format = 'fallback',
+  },
   keys = {
     {
       '<leader>f',
@@ -36,7 +40,10 @@ return { -- Autoformat
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { 'prettier', 'prettierd', stop_after_first = true },
+      javascriptreact = { 'prettier', 'prettierd', stop_after_first = true },
+      typescript = { 'prettier', 'prettierd', stop_after_first = true },
+      typescriptreact = { 'prettier', 'prettierd', stop_after_first = true },
     },
   },
 }

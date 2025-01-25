@@ -1,6 +1,7 @@
 require 'autocmd'
 require 'keymaps'
 require 'options'
+require 'dbOptions'
 
 -- CMD:
 -- :help lazy.nvim.txt

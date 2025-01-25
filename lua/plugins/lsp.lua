@@ -143,13 +143,24 @@ return {
       ensure_installed = { 'ts_ls', 'lua_ls', 'html' },
     }
     require('java').setup()
-    require('lspconfig').jdtls.setup {}
-    require('lspconfig').azure_pipelines_ls.setup {}
-    require('lspconfig').clangd.setup {
+    local nvim_lsp = require 'lspconfig'
+    nvim_lsp.jdtls.setup {}
+    nvim_lsp.azure_pipelines_ls.setup {}
+    nvim_lsp.clangd.setup {
+
       cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
       init_options = {
         fallbackFlags = { '-std=c++17' },
       },
+    }
+
+    nvim_lsp.denols.setup {
+      root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+    }
+
+    nvim_lsp.ts_ls.setup {
+      root_dir = nvim_lsp.util.root_pattern 'package.json',
+      single_file_support = false,
     }
   end,
 }
