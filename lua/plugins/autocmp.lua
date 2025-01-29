@@ -39,6 +39,9 @@ return { -- Autocompletion
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
+    vim.cmd [[
+  autocmd FileType sql,mysql,plsql lua require'cmp'.setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
+]]
 
     cmp.setup {
       snippet = {

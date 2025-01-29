@@ -38,6 +38,12 @@ map <leader>ff <Action>(GotoFile)
 map <leader>ft <Action>(GotoLine)
 map <leader>fs <Action>(GotoSymbol)
 map <leader>fc <Action>(GotoClass)
+map <leader>fg <Action>(TextSearchAction)
+
+map gf <Action>(SelectIn)  
+map gc <Action>(ExternalSystem.CollapseAll)
+
+nnoremap <A-r> :~/.ideavimrc<CR>
 
 map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>ca <Action>(ShowIntentionActions)
@@ -56,6 +62,14 @@ map <C-f> <C-f>zz
 map <C-d> <C-d>zz
 map <C-u> <C-u>zz
 map <C-b> <C-b>zz
+nnoremap H _
+nnoremap L $
+nnoremap <A-h> ,
+nnoremap <A-l> ;
+vmap H _
+vmap L $
+imap <C-y> <Action>(InsertInlineCompletionAction)
+
 map :wr <Action>(CodeCleanup)
 
 map <A-k> <Action>(EditorCloneCaretAbove)
@@ -72,3 +86,7 @@ map <leader>2 <Action>(GotoBookmark2)
 map <leader>3 <Action>(GotoBookmark3)
 map <leader>4 <Action>(GotoBookmark4)
 map <leader>5 <Action>(GotoBookmark5)
+
+map <leader>l <Action>(ShowErrorDescription)
+
+map <leader>z <Action>(WindowLayoutManager.Restore.1)

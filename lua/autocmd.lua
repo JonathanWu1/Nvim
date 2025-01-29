@@ -12,3 +12,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_user_command('Vscode', ':vsplit|:split', {})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'sql', 'mysql', 'plsql' },
+  callback = function()
+    vim.bo.omnifunc = 'vim_dadbod_completion#omni'
+    require('cmp').setup.buffer {
+      sources = {
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
+      },
+    }
+  end,
+})

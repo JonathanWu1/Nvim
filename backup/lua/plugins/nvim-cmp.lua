@@ -31,6 +31,7 @@ return {
     --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'kristijanhusak/vim-dadbod-completion',
   },
 
   config = function()
@@ -103,7 +104,11 @@ return {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
       },
     }
+
+    vim.cmd [[autocmd FileType sql,mysql,plsql lua require'cmp'.setup.buffer{sources={{name='vim-dadbod-completion'}} }]]
   end,
 }
