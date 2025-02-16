@@ -142,7 +142,6 @@ return {
       },
       ensure_installed = { 'ts_ls', 'lua_ls', 'html' },
     }
-    require('java').setup()
     local nvim_lsp = require 'lspconfig'
     nvim_lsp.jdtls.setup {}
     nvim_lsp.azure_pipelines_ls.setup {}

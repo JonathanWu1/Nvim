@@ -26,19 +26,27 @@ require('lazy').setup({
     lazy = false,
     init = function()
       require('rose-pine').setup {
-        enable = {
-          terminal = true,
-          migrations = true,
-        },
+        enable = {},
         styles = {
-          bold = true,
           italic = false,
+          trasparency = true,
+        },
+        groups = {
+          panel = 'base',
+        },
+        palette = {
+          main = {
+            base = '#232425',
+            ['@expression.identifier'] = '#ffffff',
+          },
         },
       }
       -- You can configure highlights by doing something like:
       vim.cmd 'colorscheme rose-pine'
-      vim.cmd.hi 'Comment gui=none'
     end,
+  },
+  {
+    'nvim-treesitter/playground',
   },
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
