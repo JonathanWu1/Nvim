@@ -37,6 +37,7 @@ require('lazy').setup({
         palette = {
           main = {
             base = '#232425',
+            surface = '#232425',
             ['@expression.identifier'] = '#ffffff',
           },
         },
