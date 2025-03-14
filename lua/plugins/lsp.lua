@@ -13,6 +13,7 @@ return {
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
+    'seblyng/roslyn.nvim',
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -120,7 +121,12 @@ return {
     --    :Mason
     --
     --  You can press `g?` for help in this menu.
-    require('mason').setup()
+    require('mason').setup {
+      registries = {
+        'github:mason-org/mason-registry',
+        'github:Crashdummyy/mason-registry',
+      },
+    }
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
@@ -130,6 +136,7 @@ return {
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
     require('mason-lspconfig').setup {
+      automatic_installation = true,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
