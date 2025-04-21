@@ -4,16 +4,15 @@ return {
     lazy = false,
     init = function()
         require('rose-pine').setup {
+            variant = 'auto',
+            extend_background_behind_borders = true,
+
             enable = {},
             styles = {
                 italic = false,
-                trasparency = true,
-            },
-            groups = {
-                panel = 'base',
+                trasparency = false,
             },
         }
-        -- You can configure highlights by doing something like:
         vim.cmd 'colorscheme rose-pine'
     end,
 }
