@@ -8,7 +8,10 @@ return {
 
             -- https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
             lint.linters_by_ft = {
-                markdown = { 'yamllint', 'ts-standard', 'markdownlint', 'htmlhint', 'ESLint' },
+                markdown = { 'markdownlint' },
+                html = { 'htmlhint' },
+                javascript = { 'ts-standard' },
+                yaml = { 'yamllint' },
             }
 
             local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })

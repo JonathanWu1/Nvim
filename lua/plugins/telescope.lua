@@ -1,7 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
         {
@@ -11,24 +10,13 @@ return {
                 return vim.fn.executable 'make' == 1
             end,
         },
-        { 'nvim-telescope/telescope-ui-select.nvim' },
         { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
         require('telescope').setup {
-            -- You can put your default mappings / updates / etc. in here
-            --  All the info you're looking for is in `:help telescope.setup()`
-            --
-            -- defaults = {
-            --   mappings = {
-            --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-            --   },
-            -- },
-            -- pickers = {}
-            extensions = {
-                ['ui-select'] = {
-                    require('telescope.themes').get_dropdown(),
-                },
+            defaults = {
+                path_display = { 'filename_first' },
+                layout_strategy = 'vertical',
             },
             file_ignore_patterns = {
                 '*\\.class',
@@ -37,7 +25,6 @@ return {
         }
 
         pcall(require('telescope').load_extension, 'fzf')
-        pcall(require('telescope').load_extension, 'ui-select')
 
         local builtin = require 'telescope.builtin'
         vim.keymap.set('n', '<leader>ff', builtin.find_files)
@@ -45,10 +32,15 @@ return {
         vim.keymap.set('n', '<leader>fw', builtin.grep_string)
         vim.keymap.set('n', '<leader>fg', builtin.live_grep)
         vim.keymap.set('n', '<leader>fr', builtin.oldfiles)
+        vim.keymap.set('n', '<leader>ft', builtin.treesitter)
         vim.keymap.set('n', '<leader><leader>', builtin.buffers)
 
         vim.keymap.set('n', '<leader>fn', function()
             builtin.find_files { cwd = vim.fn.stdpath 'config' }
-        end, { desc = '[S]earch [N]eovim files' })
+        end)
+
+        vim.keymap.set('n', '<leader>fh', function()
+            builtin.find_files { cwd = '~/cargonerds/helpers/' }
+        end)
     end,
 }

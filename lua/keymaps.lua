@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.keymap.set('n', '<C-g>', vim.cmd.Ex)
+vim.keymap.set('n', '<C-b>', vim.cmd.Ex)
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist)
 vim.keymap.set('n', 'H', '_')

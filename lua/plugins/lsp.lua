@@ -17,8 +17,8 @@ return {
                     vim.keymap.set(mode, keys, func, { buffer = event.buf })
                 end
                 map('gd', require('telescope.builtin').lsp_definitions)
-                map('gr', require('telescope.builtin').lsp_references)
-                map('gI', require('telescope.builtin').lsp_implementations)
+                map('gu', require('telescope.builtin').lsp_references)
+                map('gi', require('telescope.builtin').lsp_implementations)
                 map('<leader>D', require('telescope.builtin').lsp_type_definitions)
                 map('<leader>ds', require('telescope.builtin').lsp_document_symbols)
                 map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols)
