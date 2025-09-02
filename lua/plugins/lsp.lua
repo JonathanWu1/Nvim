@@ -82,6 +82,12 @@ return {
         vim.list_extend(ensure_installed, {
             'stylua',
         })
+        vim.lsp.config('roslyn', {
+            capabilities = capabilities,
+            on_attach = function()
+                print 'This will run when the server attaches!'
+            end,
+        })
 
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         require('mason-lspconfig').setup {
