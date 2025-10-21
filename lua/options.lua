@@ -1,5 +1,5 @@
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.tabstop = 8
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -28,3 +28,13 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 15
 vim.opt.wrap = false
+-- Disable wrapping in general
+vim.opt.wrap = false
+
+-- Enable wrapping only inside diagnostic floats
+vim.diagnostic.config {
+    float = {
+        wrap = true,
+        border = 'rounded',
+    },
+}

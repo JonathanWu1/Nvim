@@ -70,7 +70,6 @@ return {
             html = {},
             terraformls = {},
         }
-
         require('mason').setup {
             registries = {
                 'github:mason-org/mason-registry',
@@ -82,12 +81,49 @@ return {
         vim.list_extend(ensure_installed, {
             'stylua',
         })
+
         vim.lsp.config('roslyn', {
             capabilities = capabilities,
             on_attach = function()
                 print 'This will run when the server attaches!'
             end,
         })
+
+        -- vim.lsp.config('tailwindcss', {
+        --     settings = {
+        --         tailwindCSS = {
+        --             classAttributes = { 'class', 'className' },
+        --             filetypes = { 'typescript' },
+        --             lint = {
+        --                 cssConflict = 'warning',
+        --                 invalidApply = 'error',
+        --                 invalidConfigPath = 'error',
+        --                 invalidScreen = 'error',
+        --                 invalidTailwindDirective = 'error',
+        --                 invalidVariant = 'error',
+        --                 recommendedVariantOrder = 'warning',
+        --             },
+        --             validate = true,
+        --             files = {
+        --                 exclude = { '**/node_modules/**', '**/.git/**', '**/dist/**', '**/.next/**', '**/abpSrc/**', '**/obj/**', '**/bin/**' },
+        --             },
+        --         },
+        --     },
+        --
+        --     -- filetypes = {aspnetcorerazor, astro, astro-markdown, blade, clojure, django-html, htmldjango, edge, eelixir, elixir, ejs, erb, eruby, gohtml, gohtmltmpl, haml, handlebars, hbs, html, htmlangular, html-eex, heex, jade, leaf, liquid, markdown, mdx, mustache, njk, nunjucks, php, razor, slim, twig, css, less, postcss, sass, scss, stylus, sugarss, javascript, javascriptreact, reason, rescript, typescript, typescriptreact, vue, svelte, templ}
+        --     filetypes = {
+        --         'html',
+        --         'css',
+        --         'less',
+        --         'postcss',
+        --         'sass',
+        --         'scss',
+        --         'javascript',
+        --         'javascriptreact',
+        --         'typescript',
+        --         'typescriptreact',
+        --     },
+        -- })
 
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         require('mason-lspconfig').setup {

@@ -10,7 +10,6 @@ return {
             lint.linters_by_ft = {
                 markdown = { 'markdownlint' },
                 html = { 'htmlhint' },
-                javascript = { 'ts-standard' },
                 yaml = { 'yamllint' },
             }
 
