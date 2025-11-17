@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.opt_local.linebreak = true -- wrap at word boundaries
     end,
 })
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+    pattern = '*.curl',
+    callback = function()
+        vim.opt.filetype = 'curl'
+    end,
+})
